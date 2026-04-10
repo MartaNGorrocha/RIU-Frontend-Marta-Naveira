@@ -1,0 +1,49 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Peter Parker",
+      "alias": "Spiderman",
+      "universe": "Marvel",
+      "powerLevel": 92,
+      "city": "New York",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Bruce Wayne",
+      "alias": "Batman",
+      "universe": "DC",
+      "powerLevel": 88,
+      "city": "Gotham",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Clark Kent",
+      "alias": "Superman",
+      "universe": "DC",
+      "powerLevel": 99,
+      "city": "Metropolis",
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Tony Stark",
+      "alias": "Ironman",
+      "universe": "Marvel",
+      "powerLevel": 95,
+      "city": "Malibu",
+      "active": false
+    },
+    {
+      "id": 5,
+      "name": "Diana Prince",
+      "alias": "Wonder Woman",
+      "universe": "DC",
+      "powerLevel": 94,
+      "city": "Themyscira",
+      "active": true
+    }
+  ]
+}
