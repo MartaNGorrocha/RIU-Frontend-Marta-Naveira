@@ -6,5 +6,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/heroes/pages/heroes-list/heroes-list.component')
         .then(c => c.HeroesListComponent)
+  },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./features/heroes/pages/heroes-list/heroes-list.component')
+        .then(c => c.HeroesListComponent)
   }
 ];
