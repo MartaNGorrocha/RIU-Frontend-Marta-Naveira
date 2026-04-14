@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { UppercaseDirective } from '../../../../shared/directives/uppercase.directive';
 
 type HeroFormMode = 'create' | 'edit' | 'detail';
 
@@ -25,7 +26,8 @@ type HeroFormMode = 'create' | 'edit' | 'detail';
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    UppercaseDirective
   ],
   templateUrl: './hero-form.component.html',
   styleUrl: './hero-form.component.css'

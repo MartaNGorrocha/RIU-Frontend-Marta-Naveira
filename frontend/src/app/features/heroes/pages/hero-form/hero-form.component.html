@@ -28,7 +28,7 @@
       <div class="hero-form__grid">
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input matInput formControlName="name" />
+          <input matInput formControlName="name" appUppercase/>
           @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
           <mat-error>El nombre es obligatorio.</mat-error>
           }
