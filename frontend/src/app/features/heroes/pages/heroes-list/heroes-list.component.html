@@ -2,7 +2,7 @@
   <div class="container_actions">
     <mat-form-field>
       <mat-label>Filtro</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por alias" #input>
+      <input matInput [formControl]="filterControl" placeholder="Buscar por alias" #input>
     </mat-form-field>
 
     <button mat-button="tonal" color="primary" (click)="addHero()">Añadir Heroe</button>
@@ -35,8 +35,8 @@
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="5">No data matching the filter "{{input.value}}"</td>
+      <tr class="mat-row" *matNoDataRow [hidden]="!input.value">
+        <td class="mat-cell" colspan="5">No hay resultados para la búsqueda: "{{input.value}}"</td>
       </tr>
     </table>
   </div>

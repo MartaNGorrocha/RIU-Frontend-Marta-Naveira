@@ -1,10 +1,9 @@
-import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hero, HeroUniverse } from '../../models/hero.model';
 import { HeroesService } from '../../services/heroes.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { UppercaseDirective } from '../../../../shared/directives/uppercase.directive';
+import { map } from 'rxjs';
 
 type HeroFormMode = 'create' | 'edit' | 'detail';
 
@@ -55,20 +55,24 @@ export class HeroFormComponent implements OnInit {
     description: ['', [Validators.required, Validators.maxLength(500)]]
   });
 
+  readonly hero$ = this.route.data.pipe(
+    map(data => data['hero'] as Hero)
+  );
+
   ngOnInit(): void {
 
     this.mode = (this.route.snapshot.data['mode'] as HeroFormMode) ?? 'create';
 
-    if (this.isCreateMode) {
-      return;
-    }
+    if (this.isCreateMode) return;
 
-    this.hero = this.route.snapshot.data['hero'] as Hero;
-    this.patchForm(this.hero);
+    this.hero$.subscribe(hero => {
+      this.hero = hero;
+      this.patchForm(hero);
 
-    if (this.isDetailMode) {
-      this.form.disable();
-    }
+      if (this.isDetailMode) {
+        this.form.disable();
+      }
+    });
 
   }
 
@@ -97,7 +101,7 @@ export class HeroFormComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/heroes']);
   }
 
   onSubmit(): void {

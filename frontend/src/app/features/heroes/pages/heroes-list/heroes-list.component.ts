@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-heroes-list',
@@ -49,7 +50,7 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
 
   heroes: HeroListItem[] = [];
 
-  filterControl = new FormControl<string | HeroListItem>('');
+  filterControl = new FormControl('', { nonNullable: true });
 
   dataSource = new MatTableDataSource<HeroListItem>([]);
 
@@ -58,19 +59,20 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
     this.dataSource.filterPredicate = (hero, filter) => {
       return hero.alias.toLowerCase().includes(filter);
     };
+
+    this.filterControl.valueChanges
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged()
+      )
+      .subscribe(value => {
+        this.dataSource.filter = value.trim().toLowerCase();
+        this.dataSource.paginator?.firstPage();
+      });
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 
   loadHeroes(): void {
