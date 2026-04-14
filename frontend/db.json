@@ -186,17 +186,6 @@
       "superPower": "fgdf",
       "description": "dgdfgdfg",
       "id": "ugUU6i0_6q4"
-    },
-    {
-      "name": "m",
-      "alias": "m",
-      "universe": "DC",
-      "powerLevel": 50,
-      "city": "m",
-      "active": true,
-      "superPower": "m",
-      "description": "m",
-      "id": "420jEg8ZEGI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

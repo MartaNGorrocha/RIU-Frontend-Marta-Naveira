@@ -12,6 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { UppercaseDirective } from '../../../../shared/directives/uppercase.directive';
 import { map } from 'rxjs';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs';
+import { DeleteHeroDialogComponent } from '../../components/delete-hero-dialog/delete-hero-dialog.component';
 
 type HeroFormMode = 'create' | 'edit' | 'detail';
 
@@ -42,7 +45,11 @@ export class HeroFormComponent implements OnInit {
   readonly universes: HeroUniverse[] = ['Marvel', 'DC'];
 
   mode: HeroFormMode = 'create';
+
   hero?: Hero;
+  readonly hero$ = this.route.data.pipe(
+    map(data => data['hero'] as Hero)
+  );
 
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(60)]],
@@ -55,9 +62,7 @@ export class HeroFormComponent implements OnInit {
     description: ['', [Validators.required, Validators.maxLength(500)]]
   });
 
-  readonly hero$ = this.route.data.pipe(
-    map(data => data['hero'] as Hero)
-  );
+  private readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
 
@@ -139,9 +144,18 @@ export class HeroFormComponent implements OnInit {
   deleteHero(): void {
     if (!this.hero) return;
 
-    this.heroesService.deleteHero(this.hero.id).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+    this.dialog
+      .open(DeleteHeroDialogComponent, {
+        data: { alias: this.hero.alias }
+      })
+      .afterClosed()
+      .pipe(
+        filter(Boolean),
+        switchMap(() => this.heroesService.deleteHero(this.hero!.id))
+      )
+      .subscribe(() => {
+        this.router.navigate(['/heroes']);
+      });
   }
 
   private patchForm(hero: Hero): void {
