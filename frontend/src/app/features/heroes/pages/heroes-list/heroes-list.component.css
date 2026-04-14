@@ -7,3 +7,15 @@
 .container_table {
     overflow: auto;
 }
+
+.actions-cell {
+  white-space: nowrap;
+}
+
+.actions-cell {
+  white-space: nowrap;
+}
+
+.actions-cell button + button {
+  margin-left: 0.25rem;
+}

@@ -13,6 +13,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs';
+import { DeleteHeroDialogComponent } from '../../components/delete-hero-dialog/delete-hero-dialog.component';
 
 @Component({
   selector: 'app-heroes-list',
@@ -29,8 +32,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
     MatAutocompleteModule,
     RouterLink,
     MatPaginatorModule,
-    MatPaginator,
-    MatButtonModule],
+    MatPaginator],
   templateUrl: './heroes-list.component.html',
   styleUrl: './heroes-list.component.css'
 })
@@ -39,6 +41,7 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
   private readonly router = inject(Router);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  private readonly dialog = inject(MatDialog);
 
   displayedColumns: string[] = [
     'alias',
@@ -46,6 +49,7 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
     'powerLevel',
     'city',
     'active',
+    'actions'
   ];
 
   heroes: HeroListItem[] = [];
@@ -87,11 +91,22 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/heroes/new']);
   }
 
-  goToEdit(hero: HeroListItem): void {
+  editHero(hero: HeroListItem): void {
     this.router.navigate(['/heroes', hero.id, 'edit']);
   }
 
   deleteHero(hero: HeroListItem): void {
-    console.log('delete', hero);
+    this.dialog
+      .open(DeleteHeroDialogComponent, {
+        data: { alias: hero.alias }
+      })
+      .afterClosed()
+      .pipe(
+        filter(Boolean),
+        switchMap(() => this.heroesService.deleteHero(hero.id))
+      )
+      .subscribe(() => {
+        this.loadHeroes();
+      });
   }
 }
