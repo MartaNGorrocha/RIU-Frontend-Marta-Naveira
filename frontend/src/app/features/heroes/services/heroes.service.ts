@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Hero } from '../models/hero.model';
+import { Hero, HeroListItem } from '../models/hero.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +11,16 @@ export class HeroesService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'http://localhost:3000/heroes';
 
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.apiUrl);
+  getHeroes(): Observable<HeroListItem[]> {
+    return this.http.get<HeroListItem[]>(this.apiUrl);
   }
 
-  getHeroById(id: number): Observable<Hero> {
+  getHeroById(id: string): Observable<Hero> {
     return this.http.get<Hero>(`${this.apiUrl}/${id}`);
   }
 
-  searchHeroes(term: string): Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${this.apiUrl}?alias_like=${term}`);
+  searchHeroes(term: string): Observable<HeroListItem[]> {
+    return this.http.get<HeroListItem[]>(`${this.apiUrl}?alias_like=${term}`);
   }
 
   createHero(hero: Omit<Hero, 'id'>): Observable<Hero> {
@@ -31,7 +31,7 @@ export class HeroesService {
     return this.http.put<Hero>(`${this.apiUrl}/${hero.id}`, hero);
   }
 
-  deleteHero(id: number): Observable<void> {
+  deleteHero(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

@@ -1,0 +1,149 @@
+mat-card.mat-mdc-card.mdc-card {
+    padding: 15px;
+}
+
+.hero-form-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-form-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.hero-form-page__header h1 {
+  margin: 0 0 0.5rem;
+}
+
+.hero-form-page__header p {
+  margin: 0;
+  color: #666;
+}
+
+.hero-form-page__actions-top {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.hero-form__full-width {
+  grid-column: 1 / -1;
+}
+
+.hero-form__checkbox {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+}
+
+.hero-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .hero-form-page__header {
+    flex-direction: column;
+  }
+
+  .hero-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.hero-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-detail__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.hero-detail__name {
+  margin: 0.25rem 0 0;
+  color: #666;
+}
+
+.hero-detail__badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #e3f2fd;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.hero-badge.inactive {
+  background: #fce4ec;
+}
+
+.hero-detail__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.hero-detail__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.75rem;
+}
+
+.hero-detail__item--full {
+  grid-column: 1 / -1;
+}
+
+.hero-detail__label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.hero-detail__value {
+  font-weight: 500;
+}
+
+.hero-detail__description {
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .hero-detail__top {
+    flex-direction: column;
+  }
+
+  .hero-detail__grid {
+    grid-template-columns: 1fr;
+  }
+}

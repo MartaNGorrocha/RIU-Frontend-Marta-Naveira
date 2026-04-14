@@ -1,1 +1,151 @@
-<p>hero-form works!</p>
+<section class="hero-form-page">
+  <div class="hero-form-page__header">
+    <div>
+      <h1>{{ pageTitle }}</h1>
+      <p>{{ pageSubtitle }}</p>
+    </div>
+
+    <div class="hero-form-page__actions-top">
+      <button mat-stroked-button type="button" (click)="goBack()">
+        Volver
+      </button>
+
+      @if (isDetailMode) {
+      <button mat-stroked-button color="primary" type="button" (click)="editHero()">
+        Editar
+      </button>
+
+      <button mat-stroked-button color="warn" type="button" (click)="deleteHero()">
+        Eliminar
+      </button>
+      }
+    </div>
+  </div>
+
+  <mat-card>
+    @if(!isDetailMode) {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="hero-form">
+      <div class="hero-form__grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" />
+          @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+          <mat-error>El nombre es obligatorio.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Alias</mat-label>
+          <input matInput formControlName="alias" />
+          @if (form.get('alias')?.hasError('required') && form.get('alias')?.touched) {
+          <mat-error>El alias es obligatorio.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Universo</mat-label>
+          <mat-select formControlName="universe">
+            @for (universe of universes; track universe) {
+            <mat-option [value]="universe">{{ universe }}</mat-option>
+            }
+          </mat-select>
+          @if (form.get('universe')?.hasError('required') && form.get('universe')?.touched) {
+          <mat-error>El universo es obligatorio.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nivel de poder</mat-label>
+          <input matInput type="number" formControlName="powerLevel" />
+          @if (form.get('powerLevel')?.hasError('required') && form.get('powerLevel')?.touched) {
+          <mat-error>El nivel de poder es obligatorio.</mat-error>
+          }
+          @if ((form.get('powerLevel')?.hasError('min') || form.get('powerLevel')?.hasError('max')) &&
+          form.get('powerLevel')?.touched) {
+          <mat-error>Debe estar entre 1 y 100.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Ciudad</mat-label>
+          <input matInput formControlName="city" />
+          @if (form.get('city')?.hasError('required') && form.get('city')?.touched) {
+          <mat-error>La ciudad es obligatoria.</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="hero-form__checkbox">
+          <mat-checkbox formControlName="active">Activo</mat-checkbox>
+        </div>
+
+        <mat-form-field appearance="outline" class="hero-form__full-width">
+          <mat-label>Superpoder</mat-label>
+          <input matInput formControlName="superPower" />
+          @if (form.get('superPower')?.hasError('required') && form.get('superPower')?.touched) {
+          <mat-error>El superpoder es obligatorio.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="hero-form__full-width">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput rows="5" formControlName="description"></textarea>
+          @if (form.get('description')?.hasError('required') && form.get('description')?.touched) {
+          <mat-error>La descripción es obligatoria.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+
+      <div class="hero-form__actions">
+        <button mat-stroked-button type="button" (click)="goBack()">
+          Cancelar
+        </button>
+
+        <button mat-raised-button color="primary" type="submit">
+          {{ isCreateMode ? 'Crear héroe' : 'Guardar cambios' }}
+        </button>
+      </div>
+
+    </form>
+    }@else {
+  <div class="hero-detail">
+    <div class="hero-detail__top">
+      <div>
+        <h2>{{ hero?.alias }}</h2>
+        <p class="hero-detail__name">{{ hero?.name }}</p>
+      </div>
+
+      <div class="hero-detail__badges">
+        <span class="hero-badge">{{ hero?.universe }}</span>
+        <span class="hero-badge" [class.inactive]="!hero?.active">
+          {{ hero?.active ? 'Activo' : 'Inactivo' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="hero-detail__grid">
+      <div class="hero-detail__item">
+        <span class="hero-detail__label">Nivel de poder</span>
+        <span class="hero-detail__value">{{ hero?.powerLevel }}</span>
+      </div>
+
+      <div class="hero-detail__item">
+        <span class="hero-detail__label">Ciudad</span>
+        <span class="hero-detail__value">{{ hero?.city }}</span>
+      </div>
+
+      <div class="hero-detail__item hero-detail__item--full">
+        <span class="hero-detail__label">Superpoder</span>
+        <span class="hero-detail__value">{{ hero?.superPower }}</span>
+      </div>
+
+      <div class="hero-detail__item hero-detail__item--full">
+        <span class="hero-detail__label">Descripción</span>
+        <p class="hero-detail__description">{{ hero?.description }}</p>
+      </div>
+    </div>
+  </div>
+
+    }
+  </mat-card>
+</section>
