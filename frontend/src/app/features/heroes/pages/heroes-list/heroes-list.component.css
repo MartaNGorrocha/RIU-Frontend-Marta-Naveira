@@ -1,0 +1,9 @@
+.container_actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.container_table {
+    overflow: auto;
+}

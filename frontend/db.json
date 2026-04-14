@@ -1,49 +1,203 @@
 {
   "heroes": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Peter Parker",
       "alias": "Spiderman",
       "universe": "Marvel",
       "powerLevel": 92,
-      "city": "New York",
-      "active": true
+      "city": "Nueva York",
+      "active": true,
+      "superPower": "Sentido arácnido, adherencia a superficies y gran agilidad",
+      "description": "Héroe de barrio con habilidades arácnidas y un fuerte sentido de la responsabilidad."
     },
     {
-      "id": 2,
-      "name": "Bruce Wayne",
-      "alias": "Batman",
-      "universe": "DC",
-      "powerLevel": 88,
-      "city": "Gotham",
-      "active": true
-    },
-    {
-      "id": 3,
-      "name": "Clark Kent",
+      "id": "3",
+      "name": "Clark Kent1",
       "alias": "Superman",
       "universe": "DC",
       "powerLevel": 99,
-      "city": "Metropolis",
-      "active": true
+      "city": "Metrópolis",
+      "active": true,
+      "superPower": "Superfuerza, vuelo, visión láser e invulnerabilidad",
+      "description": "Uno de los héroes más poderosos, comprometido con la protección de la humanidad."
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Tony Stark",
       "alias": "Ironman",
       "universe": "Marvel",
       "powerLevel": 95,
-      "city": "Malibu",
-      "active": false
+      "city": "Malibú",
+      "active": false,
+      "superPower": "Armadura tecnológica con armamento avanzado e inteligencia artificial",
+      "description": "Genio multimillonario cuya tecnología lo convierte en uno de los héroes más temidos."
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Diana Prince",
       "alias": "Wonder Woman",
       "universe": "DC",
       "powerLevel": 94,
       "city": "Themyscira",
-      "active": true
+      "active": true,
+      "superPower": "Superfuerza, dominio del combate y armas divinas",
+      "description": "Princesa amazona que lucha por la justicia, la verdad y la paz."
+    },
+    {
+      "id": "6",
+      "name": "Barry Allen",
+      "alias": "Flash",
+      "universe": "DC",
+      "powerLevel": 90,
+      "city": "Central City",
+      "active": true,
+      "superPower": "Supervelocidad, reflejos extremos y viaje temporal limitado",
+      "description": "Héroe velocista capaz de reaccionar y desplazarse a velocidades extraordinarias."
+    },
+    {
+      "id": "7",
+      "name": "Steve Rogers",
+      "alias": "Capitán América",
+      "universe": "Marvel",
+      "powerLevel": 85,
+      "city": "Nueva York",
+      "active": true,
+      "superPower": "Fuerza aumentada, liderazgo y combate experto con escudo",
+      "description": "Símbolo de valentía y liderazgo, referente moral dentro de los Vengadores."
+    },
+    {
+      "id": "8",
+      "name": "Natasha Romanoff",
+      "alias": "Viuda Negra",
+      "universe": "Marvel",
+      "powerLevel": 78,
+      "city": "Moscú",
+      "active": true,
+      "superPower": "Espionaje, combate, infiltración y gran capacidad táctica",
+      "description": "Agente de élite experta en misiones encubiertas y operaciones de alto riesgo."
+    },
+    {
+      "id": "9",
+      "name": "Arthur Curry",
+      "alias": "Aquaman",
+      "universe": "DC",
+      "powerLevel": 87,
+      "city": "Atlantis",
+      "active": true,
+      "superPower": "Fuerza sobrehumana, comunicación marina y dominio del océano",
+      "description": "Rey de Atlantis y puente entre el mundo submarino y la superficie."
+    },
+    {
+      "id": "10",
+      "name": "Wanda Maximoff",
+      "alias": "Bruja Escarlata",
+      "universe": "Marvel",
+      "powerLevel": 97,
+      "city": "Sokovia",
+      "active": false,
+      "superPower": "Manipulación de la energía, telequinesis y alteración de la realidad",
+      "description": "Heroína con un poder inmenso capaz de alterar la materia y el entorno."
+    },
+    {
+      "id": "11",
+      "name": "Hal Jordan",
+      "alias": "Linterna Verde",
+      "universe": "DC",
+      "powerLevel": 89,
+      "city": "Coast City",
+      "active": true,
+      "superPower": "Creación de construcciones de energía mediante el anillo",
+      "description": "Guardián intergaláctico cuya voluntad alimenta el poder de su anillo."
+    },
+    {
+      "id": "12",
+      "name": "T'Challa",
+      "alias": "Black Panther",
+      "universe": "Marvel",
+      "powerLevel": 86,
+      "city": "Wakanda",
+      "active": true,
+      "superPower": "Fuerza mejorada, agilidad extrema y tecnología de vibranio",
+      "description": "Rey de Wakanda y protector de una de las naciones más avanzadas del mundo."
+    },
+    {
+      "id": "13",
+      "name": "Logan",
+      "alias": "Lobezno",
+      "universe": "Marvel",
+      "powerLevel": 84,
+      "city": "Alberta",
+      "active": true,
+      "superPower": "Regeneración, garras de adamantium y resistencia sobrehumana",
+      "description": "Mutante de carácter feroz con una enorme capacidad de supervivencia."
+    },
+    {
+      "id": "14",
+      "name": "Victor Stone",
+      "alias": "Cyborg",
+      "universe": "DC",
+      "powerLevel": 83,
+      "city": "Detroit",
+      "active": true,
+      "superPower": "Integración tecnológica, hackeo avanzado y armamento cibernético",
+      "description": "Héroe mitad humano mitad máquina con conexión directa a sistemas digitales."
+    },
+    {
+      "id": "15",
+      "name": "Scott Lang",
+      "alias": "Ant-Man",
+      "universe": "Marvel",
+      "powerLevel": 76,
+      "city": "San Francisco",
+      "active": true,
+      "superPower": "Cambio de tamaño, comunicación con hormigas y combate táctico",
+      "description": "Héroe capaz de reducirse o aumentar su tamaño gracias a la tecnología Pym."
+    },
+    {
+      "name": "Marta",
+      "alias": "Marta",
+      "universe": "DC",
+      "powerLevel": 61,
+      "city": "Coruña",
+      "active": true,
+      "superPower": "Developer",
+      "description": "sdferter ",
+      "id": "I0FslFDA2Gk"
+    },
+    {
+      "name": "Marta",
+      "alias": "Marta",
+      "universe": "DC",
+      "powerLevel": 61,
+      "city": "Coruña",
+      "active": true,
+      "superPower": "Developer",
+      "description": "sdferter ",
+      "id": "prd_BpXGF8o"
+    },
+    {
+      "name": "mas",
+      "alias": "mnfrg",
+      "universe": "DC",
+      "powerLevel": 50,
+      "city": "fgf",
+      "active": true,
+      "superPower": "fgdf",
+      "description": "dgdfgdfg",
+      "id": "ugUU6i0_6q4"
+    },
+    {
+      "name": "m",
+      "alias": "m",
+      "universe": "DC",
+      "powerLevel": 50,
+      "city": "m",
+      "active": true,
+      "superPower": "m",
+      "description": "m",
+      "id": "420jEg8ZEGI"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
