@@ -105,7 +105,4 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
         this.loadHeroes();
       });
   }
-
-
-
 }

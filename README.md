@@ -16,7 +16,7 @@ La aplicación incluye:
 
 ---
 
-## 🚀 Decisiones técnicas
+## Decisiones técnicas
 
 ### Versión de Angular
 
@@ -66,7 +66,7 @@ La API mock se alimenta desde el archivo `db.json`.
 
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```text
 src/
@@ -91,7 +91,7 @@ public/
      └── escudo.png
 ```
 
-### 📌 Carpeta `public`
+### Carpeta `public`
 
 Se ha utilizado la carpeta `public/` para recursos estáticos globales como el logo.
 
@@ -105,7 +105,7 @@ Se ha priorizado esta aproximación frente a `assets/` al tratarse de un recurso
 
 ---
 
-## 🧠 Modelo de datos
+## Modelo de datos
 
 Se diseñó un modelo `Hero` equilibrado entre **realismo, simplicidad y tipado fuerte**.
 
@@ -170,7 +170,7 @@ La organización por carpetas sigue una separación clara por responsabilidades:
 
 ---
 
-## 🎨 Estilos y personalización de Angular Material
+## Estilos y personalización de Angular Material
 
 Para ciertos ajustes visuales puntuales sobre componentes internos de Angular Material se ha usado:
 
@@ -186,7 +186,7 @@ Ejemplo:
 }
 ```
 
-### 📌 Justificación
+### Justificación
 
 Angular Material genera estructura DOM interna que no siempre queda cubierta por la encapsulación de estilos del componente.
 
@@ -200,7 +200,7 @@ Se trata de una solución puntual para personalización visual sin afectar al re
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Se ha mantenido el stack de testing por defecto de Angular:
 
@@ -217,7 +217,7 @@ Se han desarrollado tests unitarios para:
 * resolver
 * directiva
 
-### ⚠️ Caso conocido con Angular Material
+### Caso conocido con Angular Material
 
 Existe un caso concreto relacionado con el test del filtrado en `HeroesListComponent`.
 
@@ -242,7 +242,7 @@ Es una limitación conocida del render interno de `MatTableDataSource` en tests 
 
 ---
 
-## ▶️ Cómo ejecutar el proyecto
+## Cómo ejecutar el proyecto
 
 ### 1) Instalar dependencias
 
