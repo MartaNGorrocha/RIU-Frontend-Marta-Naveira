@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -15,10 +15,8 @@ interface DeleteHeroDialogData {
   styleUrl: './delete-hero-dialog.component.css'
 })
 export class DeleteHeroDialogComponent {
-  constructor(
-    private readonly dialogRef: MatDialogRef<DeleteHeroDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DeleteHeroDialogData
-  ) {}
+  private readonly dialogRef = inject(MatDialogRef<DeleteHeroDialogComponent>);
+  readonly data = inject<DeleteHeroDialogData>(MAT_DIALOG_DATA);
 
   cancel(): void {
     this.dialogRef.close(false);
