@@ -1,22 +1,22 @@
+import { HERO_UNIVERSES } from './../../constants/hero.constants';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Hero, HeroUniverse } from '../../models/hero.model';
+import { Hero, HeroFormMode, HeroUniverse } from '../../models/hero.model';
 import { HeroesService } from '../../services/heroes.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { UppercaseDirective } from '../../../../shared/directives/uppercase.directive';
-import { map } from 'rxjs';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { filter, switchMap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, switchMap, map } from 'rxjs';
 import { DeleteHeroDialogComponent } from '../../components/delete-hero-dialog/delete-hero-dialog.component';
 
-type HeroFormMode = 'create' | 'edit' | 'detail';
+
 
 @Component({
   selector: 'app-hero-form',
@@ -42,7 +42,7 @@ export class HeroFormComponent implements OnInit {
   private readonly heroesService = inject(HeroesService);
   private readonly fb = inject(FormBuilder);
 
-  readonly universes: HeroUniverse[] = ['Marvel', 'DC'];
+  protected readonly HERO_UNIVERSES = HERO_UNIVERSES;
 
   mode: HeroFormMode = 'create';
 

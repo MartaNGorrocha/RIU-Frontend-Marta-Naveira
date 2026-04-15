@@ -45,7 +45,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Universo</mat-label>
             <mat-select formControlName="universe">
-              @for (universe of universes; track universe) {
+              @for (universe of HERO_UNIVERSES; track universe) {
               <mat-option [value]="universe">{{ universe }}</mat-option>
               }
             </mat-select>
