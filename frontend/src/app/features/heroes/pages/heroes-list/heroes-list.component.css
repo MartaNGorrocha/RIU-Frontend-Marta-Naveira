@@ -1,3 +1,12 @@
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled,
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled:hover {
+    background-color: transparent !important;
+}
+
+button.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
+    background-color: #007bc4;
+    color:white !important;
+}
 .container_actions {
     display: flex;
     justify-content: space-between;
@@ -8,14 +17,32 @@
     overflow: auto;
 }
 
-.actions-cell {
+table.mat-mdc-table.mdc-data-table__table.cdk-table {
+    background-color: transparent;
+    margin-bottom: 35px;
+    box-shadow: none;
+}
+
+:host ::ng-deep table tbody a.hero-link{
+  font-weight: 500;
+}
+
+:host ::ng-deep table tbody .actions-cell mat-icon.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color {
+    color: #007bc4;
+}
+
+table thead th {
+    font-size: 16px;
+}
+
+table tbody .actions-cell {
   white-space: nowrap;
 }
 
-.actions-cell {
-  white-space: nowrap;
-}
-
-.actions-cell button + button {
+table tbody .actions-cell button + button {
   margin-left: 0.25rem;
+}
+
+mat-paginator.mat-mdc-paginator {
+    background-color: transparent;
 }

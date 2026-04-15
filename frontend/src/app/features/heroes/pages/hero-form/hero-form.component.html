@@ -6,16 +6,16 @@
     </div>
 
     <div class="hero-form-page__actions-top">
-      <button mat-stroked-button type="button" (click)="goBack()">
+      <button mat-flat-button type="button" (click)="goBack()">
         Volver
       </button>
 
       @if (isDetailMode) {
-      <button mat-stroked-button color="primary" type="button" (click)="editHero()">
+      <button mat-flat-button type="button" (click)="editHero()">
         Editar
       </button>
 
-      <button mat-stroked-button color="warn" type="button" (click)="deleteHero()">
+      <button mat-raised-button color="warn" type="button" (click)="deleteHero()">
         Eliminar
       </button>
       }
@@ -94,18 +94,14 @@
             }
           </mat-form-field>
         </div>
-
-
         <div class="hero-form__actions">
-          <button mat-stroked-button type="button" (click)="goBack()">
+          <button mat-flat-button type="button" (click)="goBack()">
             Cancelar
           </button>
-
-          <button mat-raised-button color="primary" type="submit">
+          <button mat-flat-button type="submit">
             {{ isCreateMode ? 'Crear héroe' : 'Guardar cambios' }}
           </button>
         </div>
-
       </form>
     }@else {
       @if (hero$ | async; as hero) {

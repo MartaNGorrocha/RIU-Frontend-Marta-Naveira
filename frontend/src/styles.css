@@ -10,3 +10,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.mat-mdc-dialog-surface.mdc-dialog__surface {
+    border-radius: 0;
+}

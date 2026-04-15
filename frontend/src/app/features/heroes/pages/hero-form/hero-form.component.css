@@ -1,5 +1,13 @@
 mat-card.mat-mdc-card.mdc-card {
     padding: 15px;
+    background-color: transparent;
+    border: 1px solid lightgrey;
+    border-radius: 0;
+}
+
+button.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
+    background-color: #007bc4;
+    color:white !important;
 }
 
 .hero-form-page {
@@ -146,4 +154,11 @@ mat-card.mat-mdc-card.mdc-card {
   .hero-detail__grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+
+:host ::ng-deep .mdc-checkbox__background {
+    background-color: #007bc4!important;
+    border-color: #007bc4 !important;
 }
