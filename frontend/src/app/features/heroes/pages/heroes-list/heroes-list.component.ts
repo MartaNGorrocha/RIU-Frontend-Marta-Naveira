@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AfterViewInit, Component, DestroyRef, inject, OnInit, ViewChild } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { HeroListItem } from '../../models/hero.model';
 import { Router, RouterLink } from '@angular/router';
@@ -9,12 +10,9 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { filter, switchMap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
 import { DeleteHeroDialogComponent } from '../../components/delete-hero-dialog/delete-hero-dialog.component';
 
 @Component({
@@ -27,18 +25,16 @@ import { DeleteHeroDialogComponent } from '../../components/delete-hero-dialog/d
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatChipsModule,
     MatCardModule,
-    MatAutocompleteModule,
-    RouterLink,
-    MatPaginatorModule,
-    MatPaginator],
+    RouterLink],
   templateUrl: './heroes-list.component.html',
   styleUrl: './heroes-list.component.css'
 })
 export class HeroesListComponent implements OnInit, AfterViewInit {
   private readonly heroesService = inject(HeroesService);
   private readonly router = inject(Router);
+
+  private readonly destroyRef = inject(DestroyRef);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   private readonly dialog = inject(MatDialog);
@@ -67,7 +63,8 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
     this.filterControl.valueChanges
       .pipe(
         debounceTime(300),
-        distinctUntilChanged()
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
       )
       .subscribe(value => {
         this.dataSource.filter = value.trim().toLowerCase();
@@ -83,7 +80,6 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
     this.heroesService.getHeroes().subscribe(heroes => {
       this.heroes = heroes;
       this.dataSource.data = heroes;
-      console.log('Heroes loaded:', this.dataSource);
     });
   }
 
@@ -109,4 +105,7 @@ export class HeroesListComponent implements OnInit, AfterViewInit {
         this.loadHeroes();
       });
   }
+
+
+
 }

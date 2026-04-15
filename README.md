@@ -63,6 +63,7 @@ Atributos:
 - powerLevel
 - city
 - active
+-description
 
 ---
 
