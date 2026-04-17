@@ -244,28 +244,102 @@ Es una limitación conocida del render interno de `MatTableDataSource` en tests 
 
 ## Cómo ejecutar el proyecto
 
-### 1) Instalar dependencias
+### Opción A: ejecución local
+
+### 1) Entrar en la carpeta frontend
+
+```bash
+cd frontend
+```
+
+### 2) Instalar dependencias
 
 ```bash
 npm install
 ```
 
-### 2) Levantar Angular
+En PowerShell (Windows), si hay restricción de ejecución de scripts:
+
+```bash
+npm.cmd install
+```
+
+### 3) Levantar Angular
 
 ```bash
 npm start
 ```
 
-### 3) Levantar API mock
+Alternativa en PowerShell:
+
+```bash
+npm.cmd start
+```
+
+### 4) Levantar API mock
 
 ```bash
 npm run api
 ```
 
-### 4) Ejecutar tests
+Alternativa en PowerShell:
 
 ```bash
-ng test
+npm.cmd run api
+```
+
+### 5) Ejecutar tests
+
+```bash
+npx ng test
+```
+
+Alternativa en PowerShell:
+
+```bash
+npm.cmd run test
+```
+
+### 6) Ejecutar tests con cobertura
+
+```bash
+npx ng test --code-coverage --watch=false --browsers=ChromeHeadless
+```
+
+Alternativa en PowerShell:
+
+```bash
+npm.cmd run test -- --code-coverage --watch=false --browsers=ChromeHeadless
+```
+
+### Resultado de cobertura
+
+Última ejecución realizada:
+
+- Statements: `93.02%`
+- Branches: `80%`
+- Functions: `88.09%`
+- Lines: `92.85%`
+
+---
+
+### Opción B: ejecución con Docker
+
+Desde la raíz del repositorio:
+
+```bash
+docker compose up --build
+```
+
+Servicios disponibles:
+
+- Frontend: `http://localhost:4200`
+- API mock (`json-server`): `http://localhost:3000/heroes`
+
+Para parar contenedores:
+
+```bash
+docker compose down
 ```
 
 
