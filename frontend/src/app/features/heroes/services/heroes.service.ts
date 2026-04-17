@@ -9,7 +9,7 @@ import { Hero, HeroListItem } from '../models/hero.model';
 export class HeroesService {
 
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:3000/heroes';
+  private readonly apiUrl = '/api/heroes';
 
   getHeroes(): Observable<HeroListItem[]> {
     return this.http.get<HeroListItem[]>(this.apiUrl);

@@ -14,7 +14,7 @@ describe('HeroesService', () => {
   let service: HeroesService;
   let httpMock: HttpTestingController;
 
-  const apiUrl = 'http://localhost:3000/heroes';
+  const apiUrl = '/api/heroes';
 
   beforeEach(() => {
     TestBed.configureTestingModule({

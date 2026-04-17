@@ -216,43 +216,33 @@ Se han desarrollado tests unitarios para:
 * diálogo de borrado
 * resolver
 * directiva
+* interceptor de carga
 
-### Caso conocido con Angular Material
+Además, se han cubierto flujos críticos de negocio (alta, edición, detalle, filtrado y borrado con confirmación) para asegurar estabilidad funcional y cobertura de ramas.
+La cobertura global obtenida supera el objetivo solicitado (80%+), incluyendo cobertura de ramas.
 
-Existe un caso concreto relacionado con el test del filtrado en `HeroesListComponent`.
+### Resultado de cobertura
 
-La combinación de:
+Última ejecución realizada:
 
-* `MatTable`
-* `MatPaginator`
-* `MatTableDataSource`
-* render interno de Angular Material
+- Statements: `93.02%`
+- Branches: `80%`
+- Functions: `88.09%`
+- Lines: `92.85%`
 
-puede provocar errores internos de renderizado durante Karma/Jasmine al modificar `dataSource.filter` dentro del test.
 
-La lógica funcional del filtrado está implementada y validada en ejecución real, pero el test unitario aislado de este caso presenta inestabilidad por dependencias internas de Angular Material.
-
-Por este motivo se ha priorizado:
-
-* mantener cobertura estable del resto del componente
-* no introducir mocks artificiales complejos del paginator
-* evitar falsos negativos en CI
-
-Es una limitación conocida del render interno de `MatTableDataSource` en tests unitarios puros.
-
----
 
 ## Cómo ejecutar el proyecto
 
 ### Opción A: ejecución local
 
-### 1) Entrar en la carpeta frontend
+#### 1) Entrar en la carpeta frontend
 
 ```bash
 cd frontend
 ```
 
-### 2) Instalar dependencias
+#### 2) Instalar dependencias
 
 ```bash
 npm install
@@ -264,7 +254,7 @@ En PowerShell (Windows), si hay restricción de ejecución de scripts:
 npm.cmd install
 ```
 
-### 3) Levantar Angular
+#### 3) Levantar Angular
 
 ```bash
 npm start
@@ -276,7 +266,7 @@ Alternativa en PowerShell:
 npm.cmd start
 ```
 
-### 4) Levantar API mock
+#### 4) Levantar API mock
 
 ```bash
 npm run api
@@ -288,7 +278,7 @@ Alternativa en PowerShell:
 npm.cmd run api
 ```
 
-### 5) Ejecutar tests
+#### 5) Ejecutar tests
 
 ```bash
 npx ng test
@@ -300,7 +290,7 @@ Alternativa en PowerShell:
 npm.cmd run test
 ```
 
-### 6) Ejecutar tests con cobertura
+#### 6) Ejecutar tests con cobertura
 
 ```bash
 npx ng test --code-coverage --watch=false --browsers=ChromeHeadless
@@ -312,16 +302,6 @@ Alternativa en PowerShell:
 npm.cmd run test -- --code-coverage --watch=false --browsers=ChromeHeadless
 ```
 
-### Resultado de cobertura
-
-Última ejecución realizada:
-
-- Statements: `93.02%`
-- Branches: `80%`
-- Functions: `88.09%`
-- Lines: `92.85%`
-
----
 
 ### Opción B: ejecución con Docker
 
