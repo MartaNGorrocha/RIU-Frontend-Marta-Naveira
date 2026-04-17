@@ -105,4 +105,32 @@ describe('HeroesListComponent', () => {
     component.deleteHero(mockHeroes[0]);
     expect(dialogSpy.open).toHaveBeenCalled();
   });
+
+  it('should apply normalized filter after debounce', fakeAsync(() => {
+    component.filterControl.setValue('  SPIDER  ');
+    tick(300);
+
+    expect(component.dataSource.filter).toBe('spider');
+  }));
+
+  it('should delete hero and reload list when dialog is confirmed', () => {
+    dialogSpy.open.and.returnValue({
+      afterClosed: () => of(true)
+    } as any);
+
+    component.deleteHero(mockHeroes[0]);
+
+    expect(heroesServiceSpy.deleteHero).toHaveBeenCalledWith('1');
+    expect(heroesServiceSpy.getHeroes).toHaveBeenCalledTimes(2);
+  });
+
+  it('should not delete hero when dialog is cancelled', () => {
+    dialogSpy.open.and.returnValue({
+      afterClosed: () => of(false)
+    } as any);
+
+    component.deleteHero(mockHeroes[0]);
+
+    expect(heroesServiceSpy.deleteHero).not.toHaveBeenCalled();
+  });
 });
