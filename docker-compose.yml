@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.api
+    container_name: heroes-api
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: heroes-frontend
+    depends_on:
+      - api
+    ports:
+      - "4200:80"
