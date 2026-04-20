@@ -35,6 +35,21 @@ Por este motivo se optó por **Angular 18**, priorizando:
 
 ---
 
+### Ajuste posterior: migración a zoneless
+
+Tal y como se comentó en los correos durante el proceso, la secuencia del trabajo fue:
+
+* primero se desarrolló la aplicación funcional completa
+* después se aplicó el ajuste técnico para adoptar paradigma **zoneless**
+
+Este cambio posterior consistió en eliminar la dependencia de `zone.js` en runtime y adaptar la configuración de Angular para mantener el mismo comportamiento funcional sin ZoneJS.
+
+No fue necesario realizar cambios en la programación funcional de la aplicación (componentes, flujos de datos o lógica de negocio), ya que la base ya estaba planteada con paradigma reactivo apoyado en **Signals**, lo que facilitó la transición a zoneless sin regresiones.
+
+Así, el histórico de commits refleja de forma natural la evolución del desarrollo: construcción inicial de la web y, a continuación, migración a zoneless.
+
+---
+
 ### Librería UI
 
 Se seleccionó **Angular Material** como librería de interfaz por permitir una implementación rápida y consistente de:
