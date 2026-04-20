@@ -305,18 +305,34 @@ npm.cmd run test -- --code-coverage --watch=false --browsers=ChromeHeadless
 
 ### Opción B: ejecución con Docker
 
-Desde la raíz del repositorio:
+#### Requisitos previos
+
+- Docker Desktop instalado y en ejecución.
+- Puerto `4200` y `3000` libres.
+
+#### 1) Entrar en la raíz del repositorio
+
+```bash
+cd RIU-Frontend-Marta-Naveira
+```
+
+#### 2) Construir y levantar servicios
 
 ```bash
 docker compose up --build
 ```
 
-Servicios disponibles:
+Este comando levanta:
+
+- Frontend Angular (contenedor `heroes-frontend`)
+- API mock con `json-server` (contenedor `heroes-api`)
+
+#### 3) Comprobar servicios
 
 - Frontend: `http://localhost:4200`
 - API mock (`json-server`): `http://localhost:3000/heroes`
 
-Para parar contenedores:
+#### 4) Parar contenedores
 
 ```bash
 docker compose down
